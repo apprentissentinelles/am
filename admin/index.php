@@ -1,7 +1,28 @@
 <?php
-if (!isset($_GET['page'])){
-  $_GET['page'] = "dashboard";
-}
+
+
+  if (!isset($_GET['page'])){
+    $_GET['page'] = "dashboard";
+  }
+
+  try
+  {
+    // On se connecte à MySQL
+    $bdd = new PDO('mysql:host=localhost;dbname=ahidamusavudb;charset=utf8', 'root', '');
+  }
+  catch(Exception $e)
+  {
+    // En cas d'erreur, on affiche un message et on arrête tout
+      die('Erreur : '.$e->getMessage());
+  }
+
+  $reponse_pages = $bdd->query('SELECT * FROM admin_pages 
+    WHERE nom="' .$_GET['page']. '"');
+
+  if (!$reponse_pages->fetch()) {
+    $_GET['page'] = "401";
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,7 +185,7 @@ if (!isset($_GET['page'])){
 
         </nav>
         <!-- End of Topbar -->
-        <?php include($_GET['page'] . ".php"); ?>
+        <?php include("pages/" . $_GET['page'] . ".php"); ?>
         
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
