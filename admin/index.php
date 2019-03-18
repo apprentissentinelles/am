@@ -17,7 +17,7 @@
   }
 
   $reponse_pages = $bdd->query('SELECT * FROM admin_pages 
-    WHERE nom="' .$_GET['page']. '"');
+    WHERE name="' .$_GET['page']. '"');
 
   if (!$reponse_pages->fetch()) {
     $_GET['page'] = "401";
@@ -66,7 +66,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item <?php echo $_GET['page'] == 'dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tableau de bord</span></a>
