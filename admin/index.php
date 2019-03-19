@@ -55,7 +55,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon">
           <img class="shadowed" src="../assets/images/logo.png" style="width: 39px" alt="Logo Ahida MUSAVU">
         </div>
@@ -67,7 +67,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item <?php echo $_GET['page'] == 'dashboard' ? 'active' : '' ?>">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tableau de bord</span></a>
       </li>
@@ -119,9 +119,16 @@
 
       <!-- Nav Item - Blog -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
           <i class="fas fa-fw fa-rss"></i>
-          <span>Articles - Blog</span></a>
+          <span>Articles - Blog</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="index.php?page=categories">Categories</a>
+            <a class="collapse-item" href="index.php?page=posts">Posts</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
